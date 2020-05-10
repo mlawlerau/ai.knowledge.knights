@@ -9,14 +9,19 @@ BKnave = Symbol("B is a Knave")
 CKnight = Symbol("C is a Knight")
 CKnave = Symbol("C is a Knave")
 
+
 def exclusive_or(symbol0, symbol1):
-    """simple helper method for exclusive or"""
+    """Simple helper method for exclusive or.
+       Happy to remove this and resubmit if you dont like it.
+    """
     return And(Or(symbol0, symbol1), Not(And(symbol0, symbol1)))
+
 
 # pairs of knights and knaves for use with convenience function 'character_says' below
 A = (AKnight, AKnave)
 B = (BKnight, BKnave)
 C = (CKnight, CKnave)
+
 
 def character_says(knight_knave_pair, sentence):
     """Convenience function to represent knowledge of statements by knight/knave characters.
@@ -28,10 +33,13 @@ def character_says(knight_knave_pair, sentence):
          Implication(AKnight, some_sentence),
          Implication(AKnave, Not(some_sentence))
        )
+
+      Happy to remove this and code the Knowledge directly if you dont like it.
     """
     knight = knight_knave_pair[0]
     knave = knight_knave_pair[1]
     return And(Implication(knight, sentence), Implication(knave, Not(sentence)))
+
 
 # Puzzle 0
 # A says "I am both a knight and a knave."
